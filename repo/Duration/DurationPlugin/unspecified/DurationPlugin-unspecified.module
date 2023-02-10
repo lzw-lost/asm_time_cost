@@ -1,0 +1,76 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "Duration",
+    "module": "DurationPlugin",
+    "version": "unspecified",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "DurationPlugin-unspecified.jar",
+          "url": "DurationPlugin-unspecified.jar",
+          "size": 13003,
+          "sha512": "9f4f5f3e26496f533528fa196389692976c117568005d88046084cdf04463f6ab15d7d900a146d3c12a9831b0c5ac3548271645c36d4883a0491640639596139",
+          "sha256": "6f0295e70877dcc2d76fda4bb5bc75285459d6eda0bcac9d4ba2130c09a5eaa9",
+          "sha1": "2bf38e79f171c5bdf707ce09024e50c657902a13",
+          "md5": "92b23052cde04fb3352ae4cc4f77901d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "4.1.3"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle-api",
+          "version": {
+            "requires": "4.1.3"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "DurationPlugin-unspecified.jar",
+          "url": "DurationPlugin-unspecified.jar",
+          "size": 13003,
+          "sha512": "9f4f5f3e26496f533528fa196389692976c117568005d88046084cdf04463f6ab15d7d900a146d3c12a9831b0c5ac3548271645c36d4883a0491640639596139",
+          "sha256": "6f0295e70877dcc2d76fda4bb5bc75285459d6eda0bcac9d4ba2130c09a5eaa9",
+          "sha1": "2bf38e79f171c5bdf707ce09024e50c657902a13",
+          "md5": "92b23052cde04fb3352ae4cc4f77901d"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+apply plugin: 'com.starry.depend.plugin'
+
+dependConfig {
+    depend {
+        openSrc = true
+        name = "DurationAnotation"
+        groupId = "com.upuphone.durationanotation"
+        artifactId = "durationAnotation"
+        path = "DurationAnotation"
+        needPublish = true
+        publishVersion = "1.0.16"
+        isRelease = false
+    }
+
+}

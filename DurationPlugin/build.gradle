@@ -1,0 +1,51 @@
+apply plugin: 'java'
+//apply plugin: 'groovy'
+apply plugin: 'kotlin'
+apply plugin: 'maven-publish'
+//apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
+repositories {
+    mavenCentral()
+    google()
+}
+dependencies {
+    implementation(gradleApi())
+    implementation(localGroovy())
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20"
+    implementation("com.android.tools.build:gradle:7.2.2")
+//    compileOnly("commons-io:commons-io:2.11.0")
+//    compileOnly("commons-codec:commons-codec:1.15")
+    compileOnly("org.ow2.asm:asm-commons:9.3")
+    compileOnly("org.ow2.asm:asm-tree:9.3")
+}
+def USER_NAME = "android"
+def USER_PASSWORD = "android"
+def PUBLISH_NAME = "TimeCostPlugin"
+def PUBLISH_GROUP_ID = "com.upuphone.asm"
+def PUBLISH_ARTIFACT_ID = "TimeCostPlugin"
+def PUBLISH_VERSION = "1.0.16-SNAPSHOT"
+
+publishing {
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            def releasesRepoUrl = "https://nexus.xjsdtech.com/repository/iot-releases/"
+            def snapshotsRepoUrl = "https://nexus.xjsdtech.com/repository/iot-snapshots/"
+            url = PUBLISH_VERSION.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            // 凭证
+            credentials {
+                username USER_NAME // 仓库发布用户名
+                password USER_PASSWORD // 仓库发布用户密码
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            groupId = PUBLISH_GROUP_ID
+            artifactId = PUBLISH_ARTIFACT_ID
+            version = PUBLISH_VERSION
+            from components.java
+        }
+    }
+}

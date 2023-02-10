@@ -1,0 +1,52 @@
+buildscript {
+    ext {
+        kotlin_version = '1.6.21'
+    }
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/iot-releases/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/iot-snapshots/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/maven-public/'
+        }
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
+
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.starry:depend:0.0.17"
+        classpath "com.upuphone.asm:TimeCostPlugin:1.0.16-SNAPSHOT"
+    }
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/iot-releases/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/iot-snapshots/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://nexus.upuphone.com/repository/maven-public/'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
