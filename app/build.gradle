@@ -46,7 +46,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     testImplementation 'junit:junit:4.13.2'
-    implementation project(':DurationAnotation')
-//    implementation 'com.upuphone.durationanotation:durationAnotation:1.0.5-SNAPSHOT'
+//    implementation project(':DurationAnotation')
+    implementation 'com.upuphone.durationanotation:durationAnotation:1.0.18-SNAPSHOT'
 
 }

@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.upuphone.durationanotation.Duration;
 
+@Duration(tag = "mmmmm-----")
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -42,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Test.log3();
+        Test.log2();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

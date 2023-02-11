@@ -8,8 +8,17 @@ dependConfig {
         artifactId = "durationAnotation"
         path = "DurationAnotation"
         needPublish = true
-        publishVersion = "1.0.16"
+        publishVersion = "1.0.20"
         isRelease = false
     }
-
+//    depend {
+//        openSrc = true
+//        name = "TimeCostPlugin"
+//        groupId = "com.upuphone.asm"
+//        artifactId = "TimeCostPlugin"
+//        path = "/DurationPlugin"
+//        needPublish = true
+//        publishVersion = "1.0.18-SNAPSHOT"
+//        isRelease = false
+//    }
 }

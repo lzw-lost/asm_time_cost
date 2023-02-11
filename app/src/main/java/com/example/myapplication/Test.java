@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-
 import com.upuphone.durationanotation.Duration;
 
 /**
@@ -11,10 +10,10 @@ import com.upuphone.durationanotation.Duration;
  * author : lzw
  * date   : 2023-2-4 14:52
  */
-@Duration(tag = "runasone")
+@Duration(tag = "runasone----")
 public class Test {
     public static String log() {
-        long start=System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -34,7 +33,7 @@ public class Test {
         return "0";
     }
 
-    // @Duration(tag = "456")
+    @Duration(tag = "456----")
     public static int log2() {
         try {
             Thread.sleep(2000);

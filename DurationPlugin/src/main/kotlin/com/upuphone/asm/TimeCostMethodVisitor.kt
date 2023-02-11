@@ -2,6 +2,7 @@ package com.upuphone.asm
 
 import com.upuphone.asm.util.Constants
 import com.upuphone.asm.util.Constants.Companion.TimeCache
+import com.upuphone.asm.util.LogHelper
 import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
@@ -28,6 +29,7 @@ class TimeCostMethodVisitor(
     @Override
     override fun onMethodEnter() {
         // 方法开始
+        
         if (isNeedVisitMethod(methodName) && logAll) {
             // && !logMethod
             startVar = newLocal(Type.LONG_TYPE)
@@ -46,8 +48,13 @@ class TimeCostMethodVisitor(
     
     @Override
     override fun onMethodExit(opcode: Int) {
+        // LogHelper.log("====== $className  $logAll  $methodName ======")
         // 方法结束
         if (isNeedVisitMethod(methodName) && logAll) {
+            // mv.visitMethodInsn(
+            //     INVOKESTATIC, TimeCache, "getTimeLog2",
+            //     "()V", false
+            // )
             mv.visitVarInsn(LLOAD, startVar)
             mv.visitLdcInsn(tagName)
             mv.visitLdcInsn(className)
@@ -62,7 +69,7 @@ class TimeCostMethodVisitor(
     }
     
     private fun isNeedVisitMethod(name: String?): Boolean {
-        return name != "getTimeLog" && name != "putEndTime" && name != "<clinit>" && name != "printlnTime" && name != "<init>"
+        return name != "getTimeLog" &&name != "<clinit>"  && name != "<init>"
     }
     
     inner class DurAnnotationVisitor(annotationVisitor: AnnotationVisitor) : AnnotationVisitor(Opcodes.ASM5, annotationVisitor) {

@@ -11,10 +11,11 @@ class TimeCostClassVisitor(nextVisitor: ClassVisitor, private val className: Str
     private var logAll: Boolean = false
     private var tagName: String? = null
     override fun visitAnnotation(descriptor: String?, visible: Boolean): AnnotationVisitor {
-        LogHelper.log("======$descriptor ======")
+      
         if (descriptor.equals(ANNOTATION_NAME)) {
             logAll = true
         }
+        // LogHelper.log("======$descriptor $className ======")
         return DurAnnotationVisitor(super.visitAnnotation(descriptor, visible))
     }
     
