@@ -22,3 +22,4 @@ implementation 'com.upuphone.durationanotation:durationAnotation:1.0.20-SNAPSHOT
 ```
 @Duration(tag = "logTag")
 ```
+注解有继承效果，可以在接口上添加，所有的实现类都可以自动添加
