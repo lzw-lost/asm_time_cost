@@ -10,7 +10,7 @@ classpath "com.upuphone.asm:TimeCostPlugin:1.0.20-SNAPSHOT"
 ```
 在app的项目中引入插件
 ```
-apply 'com.upuphone.asm'
+apply plugin: 'com.upuphone.asm'
 ```
 
 引入依赖包
