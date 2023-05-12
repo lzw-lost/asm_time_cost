@@ -10,34 +10,10 @@
 //        }
 //    }
 //}
-////dependencyResolutionManagement {
-////    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-////    repositories {
-////        maven { url 'https://maven.aliyun.com/repository/public' }
-////        google()
-////        mavenCentral()
-////        maven {
-////            allowInsecureProtocol = true
-////            url 'http://nexus.upuphone.com/repository/iot-releases/'
-////        }
-////        maven {
-////            allowInsecureProtocol = true
-////            url 'http://nexus.upuphone.com/repository/iot-snapshots/'
-////        }
-////        maven {
-////            allowInsecureProtocol true
-////            url 'http://nexus.upuphone.com/repository/maven-public/'
-////        }
-////        maven { url 'https://jitpack.io' }
-////        maven {
-////            allowInsecureProtocol = true
-////            url 'http://4thline.org/m2'
-////        }
-////    }
-////}
-//
-//buildscript {
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 //    repositories {
+//        maven { url 'https://maven.aliyun.com/repository/public' }
 //        google()
 //        mavenCentral()
 //        maven {
@@ -49,17 +25,14 @@
 //            url 'http://nexus.upuphone.com/repository/iot-snapshots/'
 //        }
 //        maven {
-//            allowInsecureProtocol = true
+//            allowInsecureProtocol true
 //            url 'http://nexus.upuphone.com/repository/maven-public/'
 //        }
-//
-//    }
-//    dependencies {
-////        classpath "com.starry:depend:${dependVersion}"
-////        classpath "com.upuphone.duration:durationPlugin:1.0.6-SNAPSHOT"
-//    }
-//    configurations.all {
-//        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+//        maven { url 'https://jitpack.io' }
+//        maven {
+//            allowInsecureProtocol = true
+//            url 'http://4thline.org/m2'
+//        }
 //    }
 //}
 
