@@ -25,7 +25,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:7.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.starry:depend:0.0.17"
-        classpath "com.upuphone.asm:TimeCostPlugin:${version}"
+        classpath "com.upuphone.asm:TimeCostPlugin:${use_version}"
     }
 }
 allprojects {
@@ -44,6 +44,9 @@ allprojects {
             allowInsecureProtocol = true
             url 'http://nexus.upuphone.com/repository/maven-public/'
         }
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
 }
 

@@ -9,19 +9,19 @@ import org.objectweb.asm.Opcodes
 
 class TimeCostClassVisitor(nextVisitor: ClassVisitor, private val className: String) : ClassVisitor(Opcodes.ASM5, nextVisitor) {
     private var logAll: Boolean = false
-    private var tagName: String? = null
+    private var tagName: String = ""
     override fun visitAnnotation(descriptor: String?, visible: Boolean): AnnotationVisitor {
       
         if (descriptor.equals(ANNOTATION_NAME)) {
             logAll = true
         }
-        // LogHelper.log("======$descriptor $className ======")
+        LogHelper.log("======$descriptor $className ======")
         return DurAnnotationVisitor(super.visitAnnotation(descriptor, visible))
     }
     
     override fun visitMethod(
         access: Int,
-        name: String?,
+        name: String,
         descriptor: String?,
         signature: String?,
         exceptions: Array<out String>?
@@ -35,7 +35,7 @@ class TimeCostClassVisitor(nextVisitor: ClassVisitor, private val className: Str
         override fun visit(name: String?, value: Any?) {
             when (name) {
                 "tag" ->
-                    tagName = value as String?
+                    tagName = value as String
             }
             super.visit(name, value)
         }

@@ -10,7 +10,6 @@ import com.upuphone.durationanotation.Duration;
  * author : lzw
  * date   : 2023-2-4 14:52
  */
-@Duration(tag = "runasone----")
 public class Test {
     public static String log() {
         long start = System.currentTimeMillis();
@@ -25,8 +24,9 @@ public class Test {
 
     @Duration(tag = "123",endClassName = "com.example.myapplication.MainActivity",endMethodName = "onResume")
     public static String log3() {
+
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -36,7 +36,7 @@ public class Test {
     @Duration(tag = "456----")
     public static int log2() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
