@@ -3,7 +3,6 @@ package com.upuphone.asm
 import com.upuphone.asm.util.Constants
 import com.upuphone.asm.util.Constants.Companion.TimeCache
 import com.upuphone.asm.util.LogHelper
-import com.upuphone.asm.util.TimeUtil
 import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
@@ -26,8 +25,6 @@ class TimeCostMethodVisitor(
 ) : AdviceAdapter(api, methodVisitor, access, methodName, descriptor) {
     
     private var startVar: Int = 0
-    private var endClassName = ""
-    private var endMethodName = ""
     
     @Override
     override fun onMethodEnter() {
@@ -38,16 +35,6 @@ class TimeCostMethodVisitor(
             startVar = newLocal(Type.LONG_TYPE)
             mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false)
             mv.visitIntInsn(LSTORE, startVar)
-            mv.visitVarInsn(LLOAD, startVar)
-            mv.visitLdcInsn(tagName)
-            mv.visitLdcInsn(className)
-            mv.visitLdcInsn(methodName)
-            mv.visitLdcInsn(endClassName)
-            mv.visitLdcInsn(endMethodName)
-            mv.visitMethodInsn(
-                INVOKESTATIC, TimeCache, "logStart",
-                "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
-            )
         }
         super.onMethodEnter()
     }
@@ -55,7 +42,6 @@ class TimeCostMethodVisitor(
     override fun visitAnnotation(descriptor: String?, visible: Boolean): AnnotationVisitor {
         if (descriptor.equals(Constants.ANNOTATION_NAME)) {
             logAll = true
-            TimeUtil.putMethodStart(className, methodName, tagName, endClassName, endMethodName)
         }
         return DurAnnotationVisitor(super.visitAnnotation(descriptor, visible))
     }
@@ -79,22 +65,11 @@ class TimeCostMethodVisitor(
                 "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
             )
         }
-        val endTime = TimeUtil.getStartTime(className, methodName)
-        if (endTime != null) {
-            mv.visitLdcInsn(endTime)
-            mv.visitLdcInsn(tagName)
-            mv.visitLdcInsn(className)
-            mv.visitLdcInsn(methodName)
-            mv.visitMethodInsn(
-                INVOKESTATIC, TimeCache, "logStart",
-                "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
-            )
-        }
         super.onMethodExit(opcode)
     }
     
     private fun isNeedVisitMethod(name: String?): Boolean {
-        return name != "getTimeLog" && name != "<clinit>" && name != "<init>"
+        return name != "getTimeLog" &&name != "<clinit>"  && name != "<init>"
     }
     
     inner class DurAnnotationVisitor(annotationVisitor: AnnotationVisitor) : AnnotationVisitor(Opcodes.ASM5, annotationVisitor) {
@@ -103,12 +78,6 @@ class TimeCostMethodVisitor(
             when (name) {
                 "tag" ->
                     tagName = value as String?
-                
-                "endClassName" ->
-                    endClassName = value as String
-                
-                "endMethodName" ->
-                    endMethodName = value as String
             }
             super.visit(name, value)
         }

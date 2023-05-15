@@ -8,7 +8,7 @@ dependConfig {
         artifactId = "durationAnotation"
         path = "DurationAnotation"
         needPublish = true
-        publishVersion = "1.0.20"
+        publishVersion = "${version.split { "-SNAPSHOT" }[0]}"
         isRelease = false
     }
 //    depend {
