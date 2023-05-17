@@ -1,5 +1,7 @@
 apply plugin: 'com.starry.depend.plugin'
 
+var version = publish_version.split("-SNAPSHOT")[0]
+println(version)
 dependConfig {
     depend {
         openSrc = true
@@ -8,8 +10,8 @@ dependConfig {
         artifactId = "durationAnotation"
         path = "DurationAnotation"
         needPublish = true
-        publishVersion = "${publish_version.split { "-SNAPSHOT" }[0]}"
-        isRelease = false
+        publishVersion = version
+        isRelease = !version.contains("-SNAPSHOT")
     }
 //    depend {
 //        openSrc = true

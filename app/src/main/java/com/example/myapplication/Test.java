@@ -22,7 +22,7 @@ public class Test {
         return "0";
     }
 
-    @Duration(tag = "123",endClassName = "com.example.myapplication.MainActivity",endMethodName = "onResume")
+    @Duration(tag = "123",endClassName = "com.example.myapplication.TestActivity",endMethodName = "onResume")
     public static String log3() {
 
         try {

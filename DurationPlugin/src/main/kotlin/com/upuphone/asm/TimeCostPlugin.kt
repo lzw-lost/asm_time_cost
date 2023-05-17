@@ -12,7 +12,7 @@ class TimeCostPlugin : Plugin<Project> {
         androidComponents.onVariants { variant ->
             variant.instrumentation.transformClassesWith(
                 TimeCostTransform::class.java,
-                    InstrumentationScope.PROJECT) {}
+                    InstrumentationScope.ALL) {}
             variant.instrumentation.setAsmFramesComputationMode(
                     FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS
             )

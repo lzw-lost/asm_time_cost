@@ -32,6 +32,9 @@ class TimeCostMethodVisitor(
     override fun onMethodEnter() {
         // 方法开始
         if (isNeedVisitMethod(methodName) && logAll) {
+            startVar = newLocal(Type.LONG_TYPE)
+            mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false)
+            mv.visitIntInsn(LSTORE, startVar)
             if (endClassName.isNotEmpty()) {
                 LogHelper.log("===onMethodEnter===   $className ======  $methodName")
                 putMethodStart(className, methodName, tagName, endClassName, endMethodName)
@@ -45,9 +48,6 @@ class TimeCostMethodVisitor(
                     "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
                 )
             }
-            startVar = newLocal(Type.LONG_TYPE)
-            mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false)
-            mv.visitIntInsn(LSTORE, startVar)
         }
         super.onMethodEnter()
     }
@@ -75,14 +75,15 @@ class TimeCostMethodVisitor(
                 "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
             )
         }
+        
         val map = getStartTime(className, methodName)
         map?.forEach{ (_, logData) ->
             mv.visitLdcInsn(logData.tag)
             mv.visitLdcInsn(logData.startClassName)
             mv.visitLdcInsn(logData.startMethodName)
-            mv.visitLdcInsn(logData.endClassName)
-            mv.visitLdcInsn(logData.endMethodName)
-            LogHelper.log("===getTimeLogDuration=== ${logData.startClassName}  ${logData.startMethodName}  ${logData.endClassName}  ${logData.endMethodName}======")
+            mv.visitLdcInsn(className)
+            mv.visitLdcInsn(methodName)
+            LogHelper.log("===getTimeLogDuration=== ${logData.startClassName}  ${logData.startMethodName}  $methodName  $methodName======")
             mv.visitMethodInsn(
                 INVOKESTATIC, TimeCache, "getTimeLogDuration",
                 "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false
