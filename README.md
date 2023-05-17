@@ -15,7 +15,7 @@ apply plugin: 'com.upuphone.asm'
 
 引入依赖包
 ```
-implementation 'com.upuphone.durationanotation:durationAnotation:1.0.20-SNAPSHOT'
+implementation 'com.upuphone.durationanotation:durationAnotation:2.0.2'
 ```
 
 在需要测量的class或者method上添加注解
