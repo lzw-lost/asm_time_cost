@@ -1,7 +1,7 @@
 apply plugin: 'com.starry.depend.plugin'
 
 var version = publish_version.split("-SNAPSHOT")[0]
-println(version)
+
 dependConfig {
     depend {
         openSrc = true
