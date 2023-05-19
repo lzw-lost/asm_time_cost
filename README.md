@@ -45,6 +45,6 @@ endClassName是结束打印时间的类名，endMethodName是结束打印方方�
 4.跨进程时间可以简介测量，如A进程的方法m,调用B进程的方法n，那就在m和n方法上分别添加注解（n的注解需要加上结束方法endClassName和endMethodName），此时m方法会打印方法开始的时间戳，
 同时endClassName也会打印结束的时间戳，相减即可得出整个的执行时长
 
-5.endClassName不需要是自己项目内可修改的代码，也可以是jar包内的代码
+5.endClassName不需要是自己项目内可修改的代码，也可以是jar包内的代码，但过滤条件要把包名加上
 
 6.注解有继承效果，可以在接口上添加，所有的实现类都可以自动添加
