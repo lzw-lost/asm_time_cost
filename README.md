@@ -8,7 +8,7 @@
 使用feature-dev分支
 在build.gradle中加入
 ```
-classpath "com.upuphone.asm:TimeCostPlugin:2.0.2"
+classpath "com.upuphone.asm:TimeCostPlugin:2.0.4"
 ```
 在app的项目中引入插件
 ```
@@ -17,7 +17,7 @@ apply plugin: 'com.upuphone.asm'
 
 引入依赖包
 ```
-implementation 'com.upuphone.durationanotation:durationAnotation:2.0.2'
+implementation 'com.upuphone.durationanotation:durationAnotation:2.0.4'
 ```
 
 在需要测量的class或者method上添加注解
