@@ -8,7 +8,7 @@
 使用feature-dev分支
 在build.gradle中加入
 ```
-classpath "com.upuphone.asm:TimeCostPlugin:2.0.5"
+classpath "com.upuphone.asm:TimeCostPlugin:2.0.6"
 ```
 在app的项目中引入插件
 ```
@@ -17,7 +17,7 @@ apply plugin: 'com.upuphone.asm'
 
 引入依赖包
 ```
-implementation 'com.upuphone.durationanotation:durationAnotation:2.0.5'
+implementation 'com.upuphone.durationanotation:durationAnotation:2.0.6'
 ```
 在gradle.properties中添加需要加注解的包名（如果不加，默认全部包名都会检测，构建效率较低），多过滤条件用"/"分割
 ```
